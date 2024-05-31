@@ -1,4 +1,4 @@
-import com.google.gson.annotations.SerializedName
+package com.rodrigues.silva.marcos.alugames.model
 
 class Game(
     val title: String,
