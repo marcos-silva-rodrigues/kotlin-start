@@ -1,6 +1,7 @@
 package com.rodrigues.silva.marcos.alugames
 
 import com.rodrigues.silva.marcos.alugames.model.Game
+import com.rodrigues.silva.marcos.alugames.model.Player
 import com.rodrigues.silva.marcos.alugames.service.ApiConsume
 import java.util.*
 
@@ -35,6 +36,13 @@ fun main() {
         } else {
             myGame?.description = myGame?.title
         }
+    }
+
+    val player1 = Player("Fulano", "fulano@email.com")
+
+    player1.let {
+        it.dataNascimento = "10/11/1995"
+        it.username = "KFunc"
     }
 
 
