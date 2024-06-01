@@ -43,6 +43,8 @@ fun main() {
     player1.let {
         it.dataNascimento = "10/11/1995"
         it.username = "KFunc"
+    }.also {
+        println(player1.id)
     }
 
 
