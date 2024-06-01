@@ -3,12 +3,14 @@ package com.rodrigues.silva.marcos.alugames
 import com.rodrigues.silva.marcos.alugames.model.Game
 import com.rodrigues.silva.marcos.alugames.model.Player
 import com.rodrigues.silva.marcos.alugames.service.ApiConsume
+import com.rodrigues.silva.marcos.alugames.util.yearTransform
 import java.util.*
 
 fun main() {
     val scanner = Scanner(System.`in`)
     val player = Player.createPlayer(scanner);
     println("Account create with successfully!")
+    println(player.birthday?.yearTransform())
 
     do {
         println("Enter with game id:")
