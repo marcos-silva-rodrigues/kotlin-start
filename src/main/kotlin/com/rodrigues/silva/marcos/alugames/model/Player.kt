@@ -1,12 +1,13 @@
 package com.rodrigues.silva.marcos.alugames.model
 
+import java.util.Scanner
 import kotlin.random.Random
 
 data class Player(
     var name: String,
     var email: String
 ) {
-    var dataNascimento: String? = null
+    var birthday: String? = null
     var username: String? = null
         set(value) {
             field = value
@@ -17,9 +18,11 @@ data class Player(
     var id: String? = null
         private set
 
-    constructor(name: String, email: String, dataNascimento: String, username: String):
+    val gameList = mutableListOf<Game?>()
+
+    constructor(name: String, email: String, birthday: String, username: String):
             this(name, email) {
-                this.dataNascimento = dataNascimento
+                this.birthday = birthday
                 this.username = username
                 createId()
             }
@@ -32,7 +35,7 @@ data class Player(
     }
 
     override fun toString(): String {
-        return "Player(name='$name', email='$email', dataNascimento=$dataNascimento, username=$username, id=$id)"
+        return "Player(name='$name', email='$email', birthday=$birthday, username=$username, id=$id)"
     }
 
     private fun createId() {
@@ -48,6 +51,28 @@ data class Player(
             return email
         } else{
             throw IllegalArgumentException("Email inválido")
+        }
+    }
+
+    companion object {
+        fun createPlayer(reading: Scanner): Player {
+            println("Welcome AluGames! Enter with you name:")
+            val name = reading.nextLine()
+            println("you e-mail:")
+            val email = reading.nextLine()
+            println("Should completed sign in with you birthday and username? (S/N)")
+            val option = reading.nextLine()
+
+            if (option.equals("s", true)) {
+                println("Enter with you birthday (DD/MM/AAAA):")
+                val birthday = reading.nextLine()
+                println("Enter with you username")
+                val username = reading.nextLine()
+
+                return Player(name, email, birthday, username)
+            } else {
+                return Player(name, email)
+            }
         }
     }
 
