@@ -59,6 +59,7 @@ class ApiConsume {
         val playerType = object : TypeToken<List<InfoPlayerJson>>() {}.type
         var playerInfoList: List<InfoPlayerJson> = gson.fromJson(json, playerType)
 
+        println(playerInfoList)
         val playerList = playerInfoList.map { playerJson ->
             playerJson.createPlayer()
         }
