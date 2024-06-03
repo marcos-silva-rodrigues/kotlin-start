@@ -1,6 +1,7 @@
 package com.rodrigues.silva.marcos.alugames.principal
 
 import com.rodrigues.silva.marcos.alugames.model.RentPeriod
+import com.rodrigues.silva.marcos.alugames.model.SubscribePlan
 import com.rodrigues.silva.marcos.alugames.service.ApiConsume
 import java.time.LocalDate
 
@@ -26,4 +27,12 @@ fun main() {
     playerCaroline.rentGame(spider, periodo4)
 
     println(playerCaroline.gameMonth(7))
+
+
+    val player2 = playerList.get(5)
+    player2.plan = SubscribePlan("PRATA", 9.9, 3)
+
+    player2.rentGame(residentVillage, periodo1)
+    player2.rentGame(spider, periodo2)
+    player2.rentGame(theLastOfUs, periodo3)
 }

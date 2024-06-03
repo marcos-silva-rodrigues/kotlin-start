@@ -18,7 +18,7 @@ data class Player(
     var id: String? = null
         private set
 
-    var plan: BasicPlan = BasicPlan("BRONZE")
+    var plan: Plan = BasicPlan("BRONZE")
     val gameList = mutableListOf<Game?>()
     val rentGames = mutableListOf<Rent>()
 
