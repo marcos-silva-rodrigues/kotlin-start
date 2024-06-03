@@ -21,6 +21,7 @@ data class Player(
     var plan: Plan = BasicPlan("BRONZE")
     val gameList = mutableListOf<Game?>()
     val rentGames = mutableListOf<Rent>()
+    val recommendedGames = mutableListOf<Game>()
     private val ratingList = mutableListOf<Int>()
 
     override val media: Double
@@ -28,6 +29,11 @@ data class Player(
 
     override fun recommended(rating: Int) {
         ratingList.add(rating)
+    }
+
+    fun recommendedGame(game: Game, nota: Int) {
+        game.recommended(nota)
+        recommendedGames.add(game)
     }
     constructor(name: String, email: String, birthday: String, username: String):
             this(name, email) {

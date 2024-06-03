@@ -30,7 +30,7 @@ fun main() {
 
 
     val player2 = playerList.get(5)
-    player2.plan = SubscribePlan("PRATA", 9.9, 3)
+    player2.plan = SubscribePlan("PRATA", 9.9, 3, 0.1)
 
     player2.rentGame(residentVillage, periodo1)
     player2.rentGame(spider, periodo2)
