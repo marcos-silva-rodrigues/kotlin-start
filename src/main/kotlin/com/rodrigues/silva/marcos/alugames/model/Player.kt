@@ -6,7 +6,7 @@ import kotlin.random.Random
 data class Player(
     var name: String,
     var email: String
-) {
+): Recommended {
     var birthday: String? = null
     var username: String? = null
         set(value) {
@@ -21,7 +21,14 @@ data class Player(
     var plan: Plan = BasicPlan("BRONZE")
     val gameList = mutableListOf<Game?>()
     val rentGames = mutableListOf<Rent>()
+    private val ratingList = mutableListOf<Int>()
 
+    override val media: Double
+        get() = ratingList.average()
+
+    override fun recommended(rating: Int) {
+        ratingList.add(rating)
+    }
     constructor(name: String, email: String, birthday: String, username: String):
             this(name, email) {
                 this.birthday = birthday
@@ -37,7 +44,7 @@ data class Player(
     }
 
     override fun toString(): String {
-        return "Player(name='$name', email='$email', birthday=$birthday, username=$username, id=$id)"
+        return "Player(name='$name', email='$email', birthday=$birthday, username=$username, id=$id, media=$media)"
     }
 
     private fun createId() {

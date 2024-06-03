@@ -3,7 +3,8 @@ package com.rodrigues.silva.marcos.alugames.model
 class SubscribePlan(
     type: String,
     val monthly: Double,
-    val games: Int) : Plan(type)
+    val games: Int,
+    val discountPercentage: Double) : Plan(type)
 {
     override fun getValue(rent: Rent): Double {
         val totalGameOfMonth = rent.player.gameMonth(
@@ -13,7 +14,13 @@ class SubscribePlan(
         return if (totalGameOfMonth <= games) {
             0.0
         } else {
-            super.getValue(rent)
+            var originalValue = super.getValue(rent)
+
+            if (rent.player.media > 8) {
+                originalValue -= originalValue * discountPercentage
+            }
+
+            originalValue
         }
     }
     }
