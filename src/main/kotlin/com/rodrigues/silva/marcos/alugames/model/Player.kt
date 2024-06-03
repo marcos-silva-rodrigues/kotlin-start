@@ -19,6 +19,7 @@ data class Player(
         private set
 
     val gameList = mutableListOf<Game?>()
+    val rentGames = mutableListOf<Rent>()
 
     constructor(name: String, email: String, birthday: String, username: String):
             this(name, email) {
@@ -53,6 +54,20 @@ data class Player(
             throw IllegalArgumentException("Email inválido")
         }
     }
+
+    fun rentGame(game: Game, period: RentPeriod): Rent {
+        val rent = Rent(this, game, period)
+        rentGames.add(rent)
+
+        return rent
+    }
+
+    fun gameMonth(month: Int): List<Game> {
+        return rentGames
+            .filter { rent ->  rent.period.initialDate.monthValue == month}
+            .map { rent ->  rent.game}
+    }
+
 
     companion object {
         fun createPlayer(reading: Scanner): Player {

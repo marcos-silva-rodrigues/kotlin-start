@@ -1,4 +1,4 @@
-package com.rodrigues.silva.marcos.alugames
+package com.rodrigues.silva.marcos.alugames.principal
 
 import com.rodrigues.silva.marcos.alugames.model.Game
 import com.rodrigues.silva.marcos.alugames.model.Player
@@ -23,7 +23,8 @@ fun main() {
 
             myGame = Game(
                 infoGame.info.title,
-                infoGame.info.thumb)
+                infoGame.info.thumb,
+                0.0)
 
             println(myGame)
         }
